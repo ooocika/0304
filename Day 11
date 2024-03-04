@@ -1,0 +1,1081 @@
+public void analyzeLogs(){
+  var requests = List.of(
+    
+  new Request("",200),
+    new Reuest("", 400),
+    new Request("", 200)
+  
+  );
+  var urlsAndRequests = requests.stream().collect(
+    Collectors.groupingBy(Request::getUrl)
+  );
+  System.out.println(urlsAndRequests);
+}
+
+//
+class Request(
+  var url : String,
+  val responseCode: Int
+)
+fun main(){
+  val requests = listOf(
+    Request("", 200),
+    Request("", 400),
+    Request("",200)
+  )
+  println(requests.groupBy(Request::url))
+}
+//
+public void objectIsInstance(){
+  var numbers = new ArrayList<>();;
+  numbers.add(null);
+  numbers.add(1);
+  numbers.add("two");
+  numbers.add(3.0);
+  numbers.add("four");
+System.out.println("All String elements in upper case:");
+  numbers.stream().filter(it -> it instanceof String)
+  .forEach(it -> System.out.println((String)it). toUpperCase());
+
+}
+//
+fun main(){
+  val numbers = listOf(null, 1, "two", 3.0, "four")
+  println("All String elements int upper case:")
+  numbers.filterIsInstance<String>().forEach{
+    println(it.uppercase())
+  }
+}
+//
+public void testPredicates(){
+  var numbers = List.of("one", "two","three","four");
+  System.out.println(number.stream().noneMatch(it->it.endsWith("e")))
+  System.out.println(number.stream().anyMatch(it->it.endsWith("e")))
+  System.out.println(number.stream().allMatch(it->it.endsWith("e")))
+}
+//
+fun main(){
+  val numbers = listOf("one", "two","three","four")
+  println(numbers.none{it.endsWith("e")})
+   println(numbers.any{it.endsWith("e")})
+    println(numbers.all{it.endsWith("e")})
+  
+}
+//
+public void zip(){
+  var colors = List.of("red","brown");
+  var animals = List.of("fox", "bear", " wolf");
+
+  for(int i =0; i< Math.min(colors.size(), animals.size()); i++){
+    String animal  =animals.get(i);
+    System.out.println("The" + animal.substring(0, 1).toUpperCase()
+                      +animal.substring(1)+ "is"+ colors.get(i));
+  }
+}
+//
+fun main(){
+  var colors = List.of("red","brown");
+  var animals = List.of("fox", "bear", " wolf");
+
+  println(colors.zip(animals){color, animal ->
+  "The ${animal.replaceFirstChar{it.uppercase()}} is $color"})
+}
+//
+public void associate(){
+  val numbers = listOf("one", "two","three","four")
+  var wordAndLength = numbers.stream()
+  .collect(toMap(number -> number, String::length));
+  System.out.println(wordAndLength);
+}
+//
+
+fun main(){
+  val numbers = listOf("one", "two","three","four")
+  println(numbers.associateWith{it.length})
+  }
+//
+int stringLength(String a)}{
+  return a.length();
+}
+void main(){
+  
+stringLength(null);
+}
+
+//
+java.lang.NullPointerException:Cannot invoke "String.length()"because "a"is null
+at test.javaNullability.stringLength(Nullability.java:8)
+at test.javaNullability.main(Nullability.java:12)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at  java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+//
+fun stringLength(a: String) = a.length
+//
+fun stringLength(a: String?): Int  =if(a!=null)a.length else 0
+//
+fun stringLength(a: String?): Int = a?.length ?: 0
+//
+public interface Game<T{
+  public T save(T x){}
+  @NotNull
+  public T load(@NotNull T x){}
+}
+interface ArcadeGame<T1>: Game<T1>{
+  override fun save (x: T1):T1
+
+  override fun load(x: T1 & Any): T1 & Any
+}
+//
+record Order(Customer customer){}
+
+recode Customer(String name){}
+
+//
+Order order = findOrder();
+
+if(order != null){
+  processCustomer(order.getCustomer());
+}
+//
+data class Order (val customer: Customer)
+datae class Customer(val name: String)
+
+val order = findOrder()
+
+if(order != null){
+  processCustomer(order.customer)
+  
+}
+//
+val order = fun Order()
+order?.let{
+  processCustomer(it.customer)
+}
+//
+findOrder()?.customer?.let(::processCustomer)
+//
+Order order = findOrder();
+if(order ==null){
+  order = new Order(new Customer("Antonio"))
+}
+//
+val order = findOrder() ?: Order(Customer("Antonio"))
+//
+var numbers = new ArrayList<Integar>();
+numbers.add(1);
+numbers.add(2);
+
+System.out.println(numbers.get(0));
+//
+fun main(){
+  val numbers = listOf(1,2)
+
+  println(numbers[0])
+
+  println(numbers.firstOrNull())
+  println(numbers.getOrNull(5))
+}
+//
+val numbers = new ArrayList<Integer>();
+var max = numbers.stream().max(Comparator.naturalOrder()).orElse(null);
+System.out.println("Max: "  + max);
+//
+val numbers =listOf<Int>()
+println("Max: ${numbers.maxOrNull()}")
+//
+int getStringLength(Object y){
+  return y instanceof String x ? x.length(): -1;
+}
+
+void main(){
+  System.out.println(getStringLength(1));
+}
+//
+fun main(){
+  println(getStringLength(1))
+}
+
+fun getStringLength(y:Any): Int{
+  val x: String? = y as? String
+  return x?.length ?; -1
+}
+//
+fun processData(
+  data: List<String>,
+  delimiter: String,
+  ignoreCase: Boolean,
+  sort: Boolean,
+  maxLength: Int
+){
+  
+}
+// 
+fun delimit(data:List<String>, delimiter: String){}
+fun ignoreCase(data: List<String>){}
+fun sortAscending(data: List<String>){}
+fun sortDescending(data: List<String>){}
+fun maxLength(data: List<String>, maxLength: Int){}
+//
+fun List<String>.delimit(delimiter: String):List<String>{}
+fun List<String>.sortAscending(): List<String>{}
+fun List<String>.sortDescending(): List<String>{}
+fun List<String>.maxLength(maxLength: Int): List<String>{}
+//
+fun String.chop(length: Int): String = substring(0, length)
+fun String.chop(length: Int, startIndex: Int)= 
+  substring(startIndex, length + startIndex)
+  //
+  header("model-card-head"){
+    p("model-card-title"){
+      +book.book.name
+    }
+    button(classes = "delete"){
+      attributes["aria-label"] = "close"
+      attributes["_"] = closeModalScript
+    }
+  }
+  //
+  headerBuilder()
+  .addClasses("modal-card-head")
+  .addElement(
+    pBuilder()
+    .addClasses("model-card-title")
+    .addContent(book.book.name)
+    .build()
+  )
+  .addElement(
+    buttonBuilder()
+    .addClasses("delete")
+    .addAttribute("aria-label","close")
+    .addAttribute("_", closeModalScript)
+    .build()
+  )
+  .build()
+  //
+  var buttonBuilder = buttonBuidler()
+  .addClasses("delete")
+  for((attributeName, attributeValue) in attributes){
+    buttonBuilder = buttonBuidler.addAttribute(attributeName, attributeValue)
+  }
+  buttonBuilder.build()
+  //
+  div("tags")
+{
+  for(genre in book.genres){
+    span("tag is-rounded is normal is-info is light"){
+      +genre
+    }
+  }
+}
+//
+fun a(href: String, block: A() -> Unit):A
+
+fun a(block: A.() -> Unit):A
+//
+sealed interface Option<T>
+  class Some<T:Any>(val t:T): Option<T>
+  object None: Option<Nothing>
+  //
+  fun findById(id: Int): Option<Person>{
+    val person = db.personById(id)
+    return if(person == null) None else Some(person)
+  }
+  //
+  fun <T>Option(t: T?): Option<out T&Any>= 
+  if(t == null)None else Some(t)
+
+  fun findById(id: Int):Option<Person> = Option(db.personById(id))
+  //
+  public fun <T> listOf(vararg elements: T): List<T = 
+  if(elements.isNotEmpty()).elements.asList()else emptyList()
+  //
+  internal object EmptyList :: List<Nothing>, Serializable, RandomAccess
+//
+fun <T> List(): List<T> = EmptyList
+
+public fun <T> listOf(vararg elements: T): List<T> = 
+  if(elements.isNotEmpty())elements.asList()else List()
+  //
+  class Graph {
+    private val _vertices: MutableSet<Int> = mutableSetOf()
+    private val _edges: MutableMap<Int, MutableSet<Int>> = mutableMapOf()
+
+    fun addVertex(vertex: Int){
+      _vertices.add(vertex)
+    }
+    fun addEdge(vertex1: Int, vertex2: Int){
+      _vertices.add(vertex1)
+      _vertices.add(vertex2)
+      _edges.getOrPut(vertex1){mutableSetOf()}.add(vertex2)
+      _edges.getOrPut(vertex2){mutableSetOf()}.add(vertex1)
+    }
+    val vertices : Set<Int>get() = _vertices
+    val edges : Map<Int, Set<Int>>get() = _edges
+    
+  }
+  //
+  fun Graph.getNumberOfVertices(): Int = vertices.size
+fun Graph.getNumberOfEdges(): Int = edgs.size
+fun Graph.getDegree(vertex: Int): Int = edges[vertex]?.size?:0
+//
+fun map(transform: (T -> R): List<R>
+
+    fun mapNotNull(transform: (T)->R?) : List<R>
+
+    listOf(1, null, 2).map(false){it.toString()}
+//
+listOf(1, null, 2).mapNotNull{it.toString()}
+//
+sealed interface JsonElement
+
+        class JsonNumber(val value: Number): JsonElement
+        class JsonObject(val values: Map<String, JsonElement>): JsonElement
+        class JsonArray(val values: List<JsonElement>): JsonElement
+        class JsonBoolean(val value: Boolean):JsonElement
+        class JsonString(val value: String): JsonElement
+        object JsonNull : JsonElement
+        //
+        fun processJson(json: JsonElement) = when (json){
+          is JsonNumber ->
+          is JsonObject ->
+          is JsonArray ->
+          is JsonBoolean -> 
+          is JsonString ->
+          is JsonNull ->
+          
+        }
+        //
+        sealed interface DBResponse{
+          operator fun <T> get(columnName: String): Sequence<T>
+        }
+        //
+        fun saveUser(username: String, password: String){
+          api.saveUser(User(username, password))
+        }
+        //
+        fun saveUser(username: String, password: String){
+          require(username.isNotBlank())P"Username should not be blank"
+          require(api.usernameAvailable(username)){"Username $username is already taken"}
+          require(password.isNotBlank( "Password should not be blank"  ))
+          require(password.length > 6){"Password should contain at least 7 letters"}
+
+          require(
+            
+          ){"..."}
+        api.saveUser(User(username, password))
+        }
+        //
+        class InputStream: Closeable{
+          private var open = truefun 
+          fun readByte(): Byte{
+            override fun close(){
+              open = false
+            }
+          }
+
+          fun readTwoBytes(inputStream:InputStream): Pait<Byte, Byte>{
+            val first = inputStream.use{it.readByte()}
+            val second = inputStream.readByte()
+            return Pair(first, second)
+          }
+        }
+        //
+        fun readByte(): Byte{
+          check(open){"Can't read from the already closed stream"}
+        }
+        //
+        enum class Test{A,B}
+        fun main(){Test.values()[0] = Test.B}
+        //
+        fun printElements(delimiter: String, vararg elements: String){
+          for(i in elements.indices){
+            print(elements[i])
+            if(i < elements, lastIndex)print(delimiter)
+          }
+        }
+        fun printWithSpace(vararg elements: String){
+          printElements(" ", *elements)
+        }
+        fun main(){
+          printWithSpace("x","y","z")
+        }
+        //
+        class Vector2D(val x: Int, val y: Int)
+        fun main(){
+          val result = (1..20).map{Vector2D(it, it)}
+          println(result)
+        }
+        override fun toString (): String = 
+    "Vector2D(x=$x, y=$y)"
+        //
+        class Person(
+          val name: String?,
+          val age: Int?,
+          val children: List<Person>
+        ){
+          override fun toString(): String = 
+          "Person(name=$name, age=$age, children=$children)"
+        }
+        class PersonBuilder{
+          var name : String? = null
+          var age : Int? = null
+          val children = arrayListOf<Person>()
+          fun child(personBuilder: PersonBuilder.() -> Unit = {}){
+            children.add(person(personBuilder))
+          }
+        }
+
+        fun person(personBuilder: PersonBuilder.() -> Unit = {}); Person{
+          val builder = PersonBuilder()
+          builder.personBuilder()
+          return Person(builder.name, builder.age, builder.children)
+        }
+        //
+        override fun toString(): String = 
+    "PersonBuilder(name=$name, age=$age, children=$children)"
+        //
+        fun fib() =
+    //
+    fun main(){
+      println(fib())
+    }
+    //
+    fun fib(nmberOfElement: Int = 5)
+    //
+    data class User{
+      val name: String,
+      val email : String
+    }
+    //
+    data class User{
+      val name: String,
+      val email : String
+      val active : Boolean = true
+    }
+    //
+    data class User{
+      val name: String,
+      val email : String
+      val active : Boolean = true
+    }{[
+      constructor(name:String, email: String):
+      this(name,email, active = true)
+    ]}
+    //
+    public User(java.lang.String, java.lang.String);
+
+        public final User copy(java.lang.String.java.lang.String);
+
+        public final User copy(java.lang.String, java.lang.String. boolean);
+        //
+        public fun x(): Number = 3
+
+        fun main{
+          println(x())
+        }
+        //
+        fun x(): Int = 3
+        //
+        fun getToken() = 1
+
+        fun getToken() = "1"
+        //
+        class Calculator{
+          fun add(a: Int, b: Int): Int = a+ b
+          fun multiply(a: Int, b: Int): Int = a*b
+          fun divide(a: Int, b: Int): Int = a/b
+        }
+        //
+
+        //
+        plugins{
+          kotlin("multiplatform")version "1.9.20"
+        }
+        //
+        fun main(){
+          println("hello . enter your name:")
+          val name = readln()
+        }
+        //
+        fun main(){
+          println("hello . enter your name:")
+          val name = readln()
+        }
+
+        name.replace(" ", "".let{
+          println("Your name containes ${it.length}letters")
+        })
+        //
+        fun String.countDistinctCharacters() = lowercase().toList().distinct().count()
+
+        fun String.countDistinctCharacters() = lowercase().toList().distinct().count()
+
+        fun main(){
+      println("hello . enter your name:")
+          val name = readln()
+
+          name.replace(" ", "").let{
+            println("your name contains ${it.length} letters")
+          
+            println("your name contains ${it.countDistinctCharacters()} unique letters")
+            
+          }
+        }
+        //
+        plugins{
+          kotlin("multiplatform")verrsion"1.9.20"
+
+          
+        }
+
+        repositories{
+        mavenCentral()
+        }
+
+        kotlin{
+          macosX64("native"){
+
+            binaries{
+              executable()
+            }
+          }
+        }
+        tasks.withType<Wrapper>{
+        gradleVersion = "8.1.1"
+          distributionType =Wrapper.DistributionType.BIN
+        } 
+        //
+        fun main(){
+        println("hello kotlin/Native!")  
+        }
+        //
+        
+    headers  = errno.h
+
+        static inline int getErrno(){
+        return errno;  
+        }
+        //
+        val path = getenv("PATH")?.toKString() ?: ""
+        //
+        fun shift(ptr: CPointer<BytePtr>. length:Int){
+          for(index in 0 .. length -2){
+            ptr[index] = ptr[index + 1]
+          }
+        }
+        //
+        val intPtr = bytePtr.reinterpret<IntVar>()
+        val intPtr : CPointer<IntVar>  = bytePtr.reintpret()
+        //
+        val long Value = ptr.toLong()
+        val originalPtr = longValue.toCPointer<T>()
+
+        //
+        val byteVar = placement.alloc<ByteVar>()
+        val bytePtr = placement.allocArray<ByteVar>(5)
+        //
+        val buffer = nativeHeap.allocaArray<ByteVar>(size)
+        <use buffer>
+    nativeHeap.free(buffer)
+
+    //
+    val fileSize = memScoped{
+      val statBuf = alloc<stat>()
+      val error = stat("/", statBuf.ptr)
+      statBuf.st_size
+    }
+    //
+    foo(CValuesOF(1,2,3),3)
+    //
+    memScoped{
+      LoadCursorA(null,"cursor.bmp".cstr.ptr)
+      LoadCursorW(null, "cursor.bmp".wcstr.ptr)
+    }
+    //
+    memScoped{
+      items = arrayOfNulls<CPointer<ITEM>?>(6)
+      arrayOf("one", "two").forEachIndexed{index, value -> items[index] = value.cstr.ptr}
+      menu = new_menu("Menu").cstr.ptr, items.toCValues().ptr)
+    
+    }
+    //
+    val fieldValue = structValue.useContents{field}
+    //
+    val stableRef = StableRef.create(kotlinReference)
+    val voidPtr = stableRef.asCPointer()//
+
+    //
+    val stableRef = voidPtr.adStableRef<KoltinClass>()
+    val kotlinReference  =stableRef.get()
+
+    ///
+    stableRef.dispose()
+    //
+    headers = library/base.h
+
+        static inline int foo(int arg){
+          return FOO(arg);
+          
+        }
+        //
+        fun ${type1}.convert<${type2}>(): ${type2}
+        //
+        fun zeroMemory(buffer: COpaquePointer, size: Int){
+        memset(buffer, 0, size.convert<size_t>())  
+        }
+        //
+        fun readData(fd: Int): String{
+          val buffer =ByteArray(1024)
+          buffer.userPinned{pinned ->
+          while(true){
+            val length = recv(fd, pinned.addressOf(0), buffer.size.convert(), 0)toInt()
+
+            if(length <= 0){
+              break
+            }
+          }}
+        }
+        //
+        plugins{
+          kotlin("multiplatform")version"1.9.20"
+        }
+        repositories{
+          mavenCentral()
+        }
+        kotlin{
+          linuxX64("native"){
+
+            val main by compilations.getting
+            val interop by main.cinterops.creating
+
+            binaries{
+              executable()
+            }
+          }
+        }
+        tasks.wrapper{
+          gradleVersion = "8.1.1"
+        distributionType = Wrapper.DistributionType.BIN
+        }
+        //
+        
+        //
+        fun main(){
+          println("hello kotlin/native!")
+
+        ints
+          uints
+          doubles
+        
+        }
+        //
+        fun ints(C: Byte, d: short, e: Int, F :Long)
+        fun uints(c: UByte, d: UShort, e:UInt, F: ULong)
+        fun doubles(a: Float, b: Double)
+        //
+        fun main(){
+          println("kotlin helloo? Native!")
+
+        ints(1,2,3,4)
+        uints(5,6,7,8)
+        doubles(9.0f, 10.0)
+        }
+        //
+        typedef struct{
+          int a;
+          double b;
+          
+        }MyStruct;
+
+        void struct_by_value (MyStruct s){}
+        void struct_by_pointer(MyStruct * s){}
+
+        typedef union{
+          int a;
+          MyStruct b;
+          float c;
+        }MyUnion;
+
+        void union_by_value(MyUnion u) {}
+        void union_by_pointer(MyUnion* u){}
+        //
+        plugins{
+          kotlin("multiplatform")version"1.9.20"
+        }
+        repositories{
+          mavenCentral()
+        }
+        kotlin{
+          linuxX64("native!")
+
+          val main by compilations.getting
+          val interop by main.cinterops.creating
+
+          binaries{
+            executable()
+          }
+        }
+        }
+        tasks.wrapper{
+          gradleVersion = " 8.1.1"
+          distributionType = Wrapper.DistributionType.BIN
+        }
+        //
+        fun main(){
+          println("hello kotlin native!")
+
+          struct_by_value
+          struct_by_pointer
+          union_by_value
+          union_by_pointer
+        }
+        //
+        fun struct_by_value(s: CValue<MyStruct>)
+        fun struct_by_pointer(s: CValuesRef<MyStruct>?)
+
+        fun union_by_value(u: CValue<MyUnion>)
+        fun union_by_pointer(u: CValuesRef<MyUnion>?)
+
+        class MyStruct constructor(rawPtr: NativePtr  : CStructVar{
+          var a: Int
+          var b : Double
+          companion object : CStructVar.Type
+        }
+        class MyUnion constructor(rawPtr: NativePtr     CStructVar{
+          var a: Int
+          var b : MyStruct
+          var c: Float
+          companion object : CstructVar.Type
+        }
+        //
+        fun <reified T: CStructVar>cValue(initialize: T.() -> Unit): CValue<T>
+
+            //
+            fun callValue(){
+              val cStruct = cValue<MyStruct>{
+                a = 42
+                b = 3.14
+              }
+              struct_by_value(cStruct)
+
+              val cUnion  =cValue<MyUnion>{
+                b.a = 5
+                b.b = 2.7182
+              }
+              union_by_value(CUnion)
+            }
+            //
+            fun <reified T : kotlinx.cinterop.CVariable>alloc(): T
+
+                                  fun <R> memScoped(block: koltinx.cinterop.MemScope.() -> R):R
+
+         fun callRef(){
+           memScoped{
+             val cStruct = alloc<MyStruct>()
+             cStruct.a = 42
+             cStruct.b =3.14
+
+             struct_by_porinter(cStruct.ptr)
+
+             val cUnion = alloc<MyUnion>()
+             cUnion.b.a = 5
+             cUnion.b.b = 2.7182
+
+             union_by_pointer(cUnion.ptr)
+           }
+         }                         
+         //
+         fun callMix_ref(){
+           val cStruct = cValue<MyStruct>{
+        a = 42
+        b =3.14
+             
+           }
+         
+         memScoped{
+           struct_by_pointer(cStruct.ptr)
+         }
+         }
+         //
+         fun callMix_value(){
+           memScoped{
+             val cStruct = alloc<MyStruct>()
+             cStruct.a = 42
+             cStruct.b = 3.14
+
+             struct_by_value(cStruct.readValue())
+           }
+         }
+         //
+         fun main(){
+           println("hello kotlin native")
+         
+         val cUnion = cValue<MyUnion>{
+         b.a =5
+           b.b = 2.712
+         }
+         memScoped{
+           union_by_Value(cUnion)
+           union_by_pointer(cUnion.ptr)
+         }
+         memScoped{
+           val cStruct =alloc<MyStruct>{
+             a=42
+             b= 3.14
+           }
+           struct_by_value(cStruct.readValue())
+           struct_by_pointer(cStruct.ptr)
+         }
+         }
+         //
+         int myFun(int i ){
+           return i+1;
+         }
+         typedef int (*MyFun)(int);
+
+                                  void accept_fun(MyFun f){
+                                    f(42);
+                                  }
+
+                                  MyFun supply_fun(){
+                                    return myFun;
+                                  }
+                                  //
+   plugins{
+     kotlin("multiplatform")version"1.9.20"
+   }                               
+   repositories{
+     mavenCentral()
+   }
+
+   kotlin{
+     linuxX64("native")
+
+   val main by compilations.getting
+     val interop by main.cinterops.creating
+
+     binaries{
+       execuatable()
+     }
+   }
+                                  }
+   tasks.wrapper{
+     gradleVersion = "8.1.1"
+     distributionType = Wrapper.DistributionType.BIN
+   }                               
+   //
+   fun main(){
+     println("hello kotlin native")
+   
+   accept_fun(https://kotlinlang.org)
+              val useMe = supply_fun
+   }
+   //
+   fun accept_fun(f: myFun?)
+   fun supply_fun(): MyFun?
+
+       fun myFun(i: kotlin.Int): Kotlin.Int
+
+              typealias MyFun = kotlinx.cinterop.CPointer<kotlin.cinterop.CFunction<(kotlin.Int)-> kotlin.Int>>
+
+       typealias myFunVar = kotlinx.cinterop.CPointerVarOf<lib.MyFun>
+       //
+       fun myFun(){
+         accept_fun(staticCFunction<Int, Int> {it+1})
+       }
+       //
+       fun myFun2(){
+         val functionFromC = supply_fun() ?: error("No function is returned")
+
+       functionFromC(42)
+       }
+       //
+       fun main(){
+         println("hello")
+       
+       val cFunctionPointer = staticCFunction<Int, Int>{it+1}
+      accept_fun(cFunctionPointer)
+
+      val funFromC = supply_fun() ?: error("No function is returned")
+       funFromC(42)
+       }
+       //
+       plugins{
+         kotlin("multiplatform")version"1.9.20"
+       }
+
+       repositories{
+         mavenCentral()
+       }
+
+       kotlin{
+         linuxX64("native")
+
+         val main by compilations.getting
+         val interop by main.cinterops.creating
+
+         binaries{
+           executable()
+         }
+       }
+              }
+              tasks.wrapper{
+                gradleVersion = "8.2.2"
+                distributionType = Wrapper.DistributionType.BIN
+              }
+              //
+              fun main(){
+                println("kotlin")
+
+              pass_string()
+              val useMe = return_string
+                val useMe2 = copy_string
+              }
+              //
+              fun pass_string(str:CValuesRef<ByteVar>
+              fun return_string(): CPointer<ByteVar>
+       fun copy_string(str:CValueRef<ByteVar>
+           //
+           fun passStringToC(){
+             val stringFromC = return_string()?.toKString()
+
+             printtln("Returned from C: $stringFromC")
+           }
+           //
+           fun CPointer<ByteVar>.toKString(): String
+                       fun CPointer<ShortVar>.toKString(): String
+                       //
+       fun sendString(){
+         val buf = ByteArray(255)
+         buf.usePinned{pinned -> 
+         if(copy_string(pinned.addressOf(0), buf.size -1) != 0){
+
+throw Error("Failed to read string from C")
+           
+         }}
+         val copiedStringFromC = buf.decodeToString()
+         println("Message from C: $copiedStringFromC")
+       }                
+       //
+       fun main(){
+         println("kotlin")
+       
+       var str = "this is a kotlin string"
+       pass_string(str.cstr)
+
+       val useMe = return_string()?.toKString() ?: error("null pointer returned")
+        println(useMe)
+
+        val copyFromC = ByteArray(255).usePinned{pinned ->
+        
+        val useMe2  =copy_string(pinned.addressOf(0). pinned.get().size - 1)
+        if(useMe2 != 0) throw Error("Failed to read String from C")
+        pinned.get().decodeToString()
+        
+        }
+       println(copyFromC)
+       }
+       //
+       kotlin{
+         val hostOs = System.getProperty("os.name")
+         val isArm64 = System.getProperty("os.arch") == "aarch64"
+         val isMingwX64 = hostOs.startsWith("Windows")
+       
+       val nativeTarget = when{
+
+         hostOs == " Mac OS X" && isArm64 -> macosArm64("native")
+         hostOs == " Mac OS X" && !isArm64 -> macosX64("native")
+         hostOs == " Linux" && isArm64 -> linuxArm64("native")
+         hostOs == " Linux" && !isArm64 ->linuxArm64("native")
+         isMingwX64 -> mingwX64('native')
+         else -> throw GradleException("host os is not supported in kotlin/native")
+       }
+       nativetarget.apply{
+         binaries{
+           executable{
+             entryPointer = "main"
+           }
+         }
+       }
+       }
+       //
+       nativeTarget.apply{
+         compilations.getByName("main"){
+           cinterops{
+             val libcurl by creating
+           }
+         }
+         binaries{
+           executable[
+             entryPoint = "main"
+           ]
+         }
+       }
+
+       //
+       val libcurl by creating{
+         defFile(project.file("src/nativeInterop/cinterop/libcurl.def"))
+
+         packageName("com.jetbrains.handson.http")
+
+         compilerOpts("-I/path")
+
+         includeDirs.addHeaders("path")
+       }
+       //
+       @OptIn(ExperimentalForeignApi::class)
+       fun main(args:Array<String>){
+         val curl = curl_easy_init()
+         if(curl != null)
+         {
+           curl_easy_setopt(curl, CURLOPT_URL, "")
+           curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L)
+         val res = curl_easy_perform(curl)
+         if(res != CURLE_OK){
+           println("curl_easy_perform() failed $ {curl_easy_strerror(res)?. toKString()}")
+         }
+         curl_easy_cleanup(curl)
+         }
+       }
+       //
+       @ObjCName(swiftName = "MySwiftArray")
+       class MyKotlinArray{
+         @ObjCName("index")
+         fun indexOf(@ObjectCName("of")element: String): Int = TODO()
+       }
+
+       let Array = MySwiftArray()
+       let index = array.index(of: "element")
+       //
+       MyLibraryUtilsKt.foo()
+       //
+       player.moveTo(LEFT, byMeters =17)
+       player.moveTo(Up.byInched =42)
+       //
+       object MyObject{
+         val x ="Some value"
+       }
+       class MyClass{
+         companion object{
+           val x = "some value"
+         }
+       }
+       //
+       
+          foo{
+            bar($0 as ! Int32)
+            return kotlinUnit()
+          }
+          //
+          class Sample<T: Any>(){
+            fun myVal(): T
+          }
+          //
+          data class SomeData(val num: Int = 42): BaseDate()
+          class GenVarOut<out T : Any(val arg: T)
+
+          let variOut = GenVerOut<someData>(arg:sd)
+          let variOutAny: GenVarOut<BaseData> = variOut as!GenVarOut<BaseData>)
+       // 688P 
+       
+       
